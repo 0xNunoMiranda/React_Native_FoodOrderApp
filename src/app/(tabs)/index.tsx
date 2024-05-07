@@ -1,31 +1,73 @@
-import { StyleSheet } from 'react-native';
+import { View,FlatList } from 'react-native';
+import ProductListItem from '@components/ProductList/ProductListItem';
 
-import EditScreenInfo from '@/src/components/EditScreenInfo';
-import { Text, View } from '@/src/components/Themed';
+const products =[
+  {
+    id:1,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:2,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:3,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:4,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:5,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:6,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:7,
+    name:"teste",
+    price:12.3,
+    image:""
+  },
+  {
+    id:8,
+    name:"teste",
+    price:12.3,
+    image:""
+  }
+]
 
-export default function TabOneScreen() {
+const product = products[0];
+
+export default function MenuScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View>
+      {/* <ProductListItem product={products[0]} /> */}
+      <FlatList
+        data={products}
+        renderItem={
+          ({item})=><ProductListItem product={item} />
+        }
+        numColumns={2}
+        columnWrapperStyle = {{gap:10,padding:10}}
+        contentContainerStyle = {{gap:10}}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
