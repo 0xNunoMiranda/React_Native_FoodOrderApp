@@ -1,6 +1,7 @@
-import { StyleSheet,View, Image, Text, Pressable } from "react-native";
+import { StyleSheet,View, Image, Text, Pressable,Button, Alert } from "react-native";
 import { Product } from "../../types";
 import { Link } from "expo-router";
+import React from "react";
 
 export const defaultPizzaImage =
     'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
@@ -17,7 +18,21 @@ const ProductListItem = ({product}:ProductListItemProps)=>{
           <Pressable  style={styles.container}>
             <Image source={{uri: product.image || defaultPizzaImage }} style={styles.image} resizeMode="contain" />
             <Text style={styles.title}>{product.id}</Text>
-            <Text style={styles.title}>{product.name}</Text>
+            <Button onPress={()=>{
+              Alert.alert('Alert Title', 'My Alert Msg', [
+                {
+                  text: 'Ask',
+                  onPress: () => console.log('Ask '),
+                },
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                },
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                {text: 'aOK', onPress: () => console.log('->OK Pressed')},
+              ]);
+            }} style={styles.title} title={product.name} />
           </Pressable>
         </Link>
     );
